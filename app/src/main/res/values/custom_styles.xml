@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonNextSeason">
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+    </style>
+    <style name="Names">
+        <item name="android:textSize">28sp</item>
+        <item name="fontFamily">@font/aller_bd</item>
+    </style>
+    <style name="Description">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/aller_bd</item>
+    </style>
+</resources>

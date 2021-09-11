@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/relationshipsFragment"
+        android:title="@string/relationships"
+        android:icon="@drawable/ic_relationships"/>
+
+    <item
+        android:id="@+id/notificationsFragment"
+        android:title="@string/notifications"
+        android:icon="@drawable/ic_notifications" />
+    <item
+        android:id="@+id/eventsFragment"
+        android:title="@string/events"
+        android:icon="@drawable/ic_person" />
+    <item
+        android:id="@+id/statsFragment"
+        android:title="@string/stats"
+        android:icon="@drawable/ic_stats"/>
+
+
+</menu>

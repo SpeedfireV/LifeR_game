@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">LifeR(game)</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="next_season">Next Season</string>
+    <string name="season">Summer</string>
+    <string name="player_name">Player Name</string>
+    <string name="assets">Assets</string>
+    <string name="properties">Properties</string>
+    <string name="family_tree">Family Tree</string>
+    <string name="relationships">Relationships</string>
+    <string name="notifications">Notifications</string>
+    <string name="events">Events</string>
+    <string name="stats">Stats</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="seasons">
+        <item>Winter</item>
+        <item>Spring</item>
+    </string-array>
+    <string-array name="years">
+        <item>1</item>
+        <item>1</item>
+    </string-array>
+</resources>

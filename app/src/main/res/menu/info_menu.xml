@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/assets" >
+        <menu>
+            <item
+                android:id="@+id/nav_properties"
+                android:icon="@drawable/ic_properties"
+                android:title="@string/properties" />
+            <item
+                android:id="@+id/nav_family_tree"
+                android:icon="@drawable/ic_family"
+                android:title="@string/family_tree" />
+        </menu>
+    </item>
+    <item android:title="Restart">
+        <menu>
+            <item
+                android:id="@+id/nav_restart"
+                android:icon="@drawable/ic_baseline_arrow_circle_left_24"
+                android:title="Restart" />
+
+        </menu>
+    </item>
+
+
+
+</menu>
