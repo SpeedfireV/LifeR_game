@@ -5,13 +5,14 @@
       <map>
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/font/new_font.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/child_notifications_events_layout.xml" value="0.19791666666666666" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/fragment_events.xml" value="0.28804347826086957" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/fragment_events_second.xml" value="0.26856884057971014" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/fragment_relationships.xml" value="0.26856884057971014" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/fragment_stats.xml" value="0.28804347826086957" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/notifications_events_layout.xml" value="0.33" />
-        <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/notifications_layout.xml" value="0.37702503681885124" />
+        <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/notifications_layout.xml" value="0.33" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/layout/player_info.xml" value="0.33" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/menu/bottom_menu.xml" value="0.2994791666666667" />
         <entry key="..\:/Users/grzeg/AndroidStudioProjects/LifeRgame/app/src/main/res/menu/info_menu.xml" value="0.2994791666666667" />

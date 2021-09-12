@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         // Button Next Season
         val buttonNextSeason: Button = findViewById(R.id.b_next_season)
         buttonNextSeason.setOnClickListener {
-            databaseHandler.newSeason(SeasonsModelClass(0, 0, "", "Something Happened"), false)
+            databaseHandler.newSeason(SeasonsModelClass(0, 0, "", "An event happened; And another event"), false)
             seasonsAdapter()
         }
 
@@ -39,10 +39,8 @@ class MainActivity : AppCompatActivity() {
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         // Database Handler
-        if (databaseHandler.getInfoAboutSeasons().size < 1) {
             databaseHandler.deleteLife()
-            databaseHandler.newSeason(SeasonsModelClass(0, 1, databaseHandler.randomSeason(), "Something Happened"), true)
-        }
+            databaseHandler.newSeason(SeasonsModelClass(0, 1, databaseHandler.randomSeason(), "First year happened"), true)
 
 
         // Energy Bar
@@ -66,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_properties -> Toast.makeText(applicationContext, "Clicked Properties", Toast.LENGTH_SHORT).show()
                 R.id.nav_restart -> {Toast.makeText(applicationContext, "Clicked Restart", Toast.LENGTH_SHORT).show()
                     databaseHandler.deleteLife()
-                    databaseHandler.newSeason(SeasonsModelClass(0, 1, databaseHandler.randomSeason(), "Something Happened"), true)
+                    databaseHandler.newSeason(SeasonsModelClass(0, 1, databaseHandler.randomSeason(), "First Year Happened"), true)
                     seasonsAdapter()}
             }
 
@@ -102,7 +100,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun seasonsAdapter() {
-        val rvMainFragment = findViewById<RecyclerView>(R.id.rv_seasons_events)
+        val rvMainFragment = findViewById<RecyclerView>(R.id.rv_parent_seasons_events)
 
         rvMainFragment.layoutManager = LinearLayoutManager(this)
 
@@ -115,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             yearList.add(i.year)
             eventsList.add(i.events)
         }
-        rvMainFragment.adapter = RecyclerAdapterMain(yearList, seasonList)
+        rvMainFragment.adapter = RecyclerAdapterMain(yearList, seasonList, eventsList)
     }
 
 }

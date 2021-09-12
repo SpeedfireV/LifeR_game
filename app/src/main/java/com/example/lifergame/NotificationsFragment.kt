@@ -1,12 +1,10 @@
 package com.example.lifergame
 
 import android.os.Bundle
-import android.text.Layout
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -32,9 +30,7 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val pol = view.findViewById<RecyclerView>(R.id.rv_list_of_events)
-
-        val rvMainFragment = view.findViewById<RecyclerView>(R.id.rv_seasons_events)
+        val rvMainFragment = view.findViewById<RecyclerView>(R.id.rv_parent_seasons_events)
         val databaseHandler = EventsAndSeasonsDatabaseHandler(view.context)
 
         val infoAboutSeasons = databaseHandler.getInfoAboutSeasons()
@@ -46,10 +42,7 @@ class NotificationsFragment : Fragment() {
             eventsList.add(i.events)
         }
         rvMainFragment.layoutManager = LinearLayoutManager(activity)
-        rvMainFragment.adapter = RecyclerAdapterMain(yearList, seasonList)
-
-        pol.layoutManager = LinearLayoutManager(activity)
-        pol.adapter = RecyclerAdapterEvents(mutableListOf("EVENT HAPPENED"))
+        rvMainFragment.adapter = RecyclerAdapterMain(yearList, seasonList, eventsList)
 
 
     }
