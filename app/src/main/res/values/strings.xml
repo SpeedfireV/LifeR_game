@@ -9,19 +9,10 @@
     <string name="properties">Properties</string>
     <string name="family_tree">Family Tree</string>
     <string name="relationships">Relationships</string>
-    <string name="notifications">Notifications</string>
+    <string name="history">History</string>
     <string name="events">Events</string>
     <string name="stats">Stats</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="some_event">- Some Event</string>
-
-    <string-array name="seasons">
-        <item>Winter</item>
-        <item>Spring</item>
-    </string-array>
-    <string-array name="years">
-        <item>1</item>
-        <item>1</item>
-    </string-array>
 </resources>

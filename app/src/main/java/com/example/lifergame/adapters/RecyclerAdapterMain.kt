@@ -1,19 +1,15 @@
-package com.example.lifergame
-import android.app.Activity
-import android.content.Context
+package com.example.lifergame.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lifergame.R
 
 class RecyclerAdapterMain(private var year: MutableList<Int>, private var season: MutableList<String>, private var event: MutableList<String>): RecyclerView.Adapter<RecyclerAdapterMain.ViewHolder>() {
 
@@ -24,11 +20,19 @@ class RecyclerAdapterMain(private var year: MutableList<Int>, private var season
         val itemSeason: TextView = itemView.findViewById(R.id.tv_season_fragment)
         val itemSeasonImage: ImageView = itemView.findViewById(R.id.iv_season_fragment)
         val itemConstraintLayout: ConstraintLayout = itemView.findViewById(R.id.cl_notifications_season)
-        val itemColorAutumn: Int = ContextCompat.getColor(itemView.context, R.color.yellow_800_autumn)
+        val itemColorAutumn: Int = ContextCompat.getColor(itemView.context,
+            R.color.yellow_800_autumn
+        )
         val itemColorWinter: Int = ContextCompat.getColor(itemView.context, R.color.cyan_600_winter)
-        val itemColorSpring: Int = ContextCompat.getColor(itemView.context, R.color.light_green_A200_spring)
-        val itemColorSummer: Int = ContextCompat.getColor(itemView.context, R.color.yellow_400_summer)
+        val itemColorSpring: Int = ContextCompat.getColor(itemView.context,
+            R.color.light_green_A200_spring
+        )
+        val itemColorSummer: Int = ContextCompat.getColor(itemView.context,
+            R.color.yellow_400_summer
+        )
         val itemRecyclerViewChildEvents: RecyclerView = itemView.findViewById(R.id.rv_list_of_events)
+        val itemReadableDatabase: EventsAndSeasonsDatabaseHandler = EventsAndSeasonsDatabaseHandler(itemView.context)
+        val itemCurrentInfoAboutDatabase = itemReadableDatabase.getInfoAboutSeasons()
 
 
 
@@ -52,6 +56,11 @@ class RecyclerAdapterMain(private var year: MutableList<Int>, private var season
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val childLayoutManager = LinearLayoutManager(holder.itemRecyclerViewChildEvents.context)
+        var eventsList = mutableListOf<String>()
+
+        for (i in holder.itemCurrentInfoAboutDatabase){
+            eventsList.add(i.events)
+        }
 
 
         holder.itemYear.text = "${year[position]}. Year"
@@ -61,26 +70,26 @@ class RecyclerAdapterMain(private var year: MutableList<Int>, private var season
                 holder.itemConstraintLayout.setBackgroundColor(holder.itemColorAutumn)
                 holder.itemRecyclerViewChildEvents.apply {
                     layoutManager = childLayoutManager
-                    adapter = RecyclerAdapterEvents(event, holder.itemColorAutumn, position)
+                    adapter = RecyclerAdapterEvents(eventsList[position], holder.itemColorAutumn)
                 }}
             "winter" -> {holder.itemSeasonImage.setImageResource(R.drawable.ic_winter)
                         holder.itemConstraintLayout.setBackgroundColor(holder.itemColorWinter)
                         holder.itemRecyclerViewChildEvents.apply {
                             layoutManager = childLayoutManager
-                            adapter = RecyclerAdapterEvents(event, holder.itemColorWinter, position)
+                            adapter = RecyclerAdapterEvents(eventsList[position], holder.itemColorWinter)
                         }
             }
             "spring" -> {holder.itemSeasonImage.setImageResource(R.drawable.ic_spring)
                         holder.itemConstraintLayout.setBackgroundColor(holder.itemColorSpring)
                 holder.itemRecyclerViewChildEvents.apply {
                     layoutManager = childLayoutManager
-                    adapter = RecyclerAdapterEvents(event, holder.itemColorSpring, position)
+                    adapter = RecyclerAdapterEvents(eventsList[position], holder.itemColorSpring)
                 }}
             "summer" -> {holder.itemSeasonImage.setImageResource(R.drawable.ic_summer)
                         holder.itemConstraintLayout.setBackgroundColor(holder.itemColorSummer)
                 holder.itemRecyclerViewChildEvents.apply {
                     layoutManager = childLayoutManager
-                    adapter = RecyclerAdapterEvents(event, holder.itemColorSummer, position)
+                    adapter = RecyclerAdapterEvents(eventsList[position], holder.itemColorSummer)
                 }}
         }
     }

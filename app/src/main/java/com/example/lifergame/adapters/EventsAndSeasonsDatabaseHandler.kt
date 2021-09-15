@@ -1,4 +1,4 @@
-package com.example.lifergame
+package com.example.lifergame.adapters
 
 import android.content.ContentValues
 import android.content.Context
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.Toast
+import com.example.lifergame.models.SeasonsModelClass
 
 class EventsAndSeasonsDatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
@@ -64,7 +64,7 @@ class EventsAndSeasonsDatabaseHandler(context: Context) : SQLiteOpenHelper(conte
 
         val infoList: ArrayList<SeasonsModelClass> = ArrayList<SeasonsModelClass>()
 
-        val selectQuery = "SELECT  * FROM ${TABLE_EVENTS}"
+        val selectQuery = "SELECT  * FROM $TABLE_EVENTS"
 
         val db = this.readableDatabase
         var cursor: Cursor? = null

@@ -1,4 +1,4 @@
-package com.example.lifergame
+package com.example.lifergame.activities
 
 import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +13,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lifergame.R
+import com.example.lifergame.adapters.EventsAndSeasonsDatabaseHandler
+import com.example.lifergame.adapters.RecyclerAdapterMain
+import com.example.lifergame.models.SeasonsModelClass
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -24,28 +28,34 @@ class MainActivity : AppCompatActivity() {
     val eventsList = mutableListOf<String>()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Button Next Season
+
         val buttonNextSeason: Button = findViewById(R.id.b_next_season)
         buttonNextSeason.setOnClickListener {
-            databaseHandler.newSeason(SeasonsModelClass(0, 0, "", "An event happened; And another event"), false)
+
+            databaseHandler.newSeason(SeasonsModelClass(0, 0, "", "An event happened;And another event;Third event also happened"), false)
             seasonsAdapter()
         }
 
-        // Bottom navigation
+
+            // Bottom navigation
         val drawerLayout : DrawerLayout = findViewById(R.id.main_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
+
+
         // Database Handler
+        if (databaseHandler.getInfoAboutSeasons().size == 0) {
             databaseHandler.deleteLife()
             databaseHandler.newSeason(SeasonsModelClass(0, 1, databaseHandler.randomSeason(), "First year happened"), true)
+        }
 
 
         // Energy Bar
         val energyBar : ProgressBar = findViewById(R.id.pb_energy)
-        val currentEnergy = 0
+        val currentEnergy = 10
         energyBar.max = 10
 
         ObjectAnimator.ofInt(energyBar, "progress", currentEnergy)
@@ -100,9 +110,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun seasonsAdapter() {
-        val rvMainFragment = findViewById<RecyclerView>(R.id.rv_parent_seasons_events)
-
-        rvMainFragment.layoutManager = LinearLayoutManager(this)
 
 
         val infoAboutSeasons = databaseHandler.getInfoAboutSeasons()
@@ -113,7 +120,16 @@ class MainActivity : AppCompatActivity() {
             yearList.add(i.year)
             eventsList.add(i.events)
         }
-        rvMainFragment.adapter = RecyclerAdapterMain(yearList, seasonList, eventsList)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val chosenMenuItem = bottomNavigationView.selectedItemId
+
+        if (chosenMenuItem == R.id.historyFragment) {
+            val rvMainFragment = findViewById<RecyclerView>(R.id.rv_parent_seasons_events)
+            rvMainFragment.adapter = RecyclerAdapterMain(yearList, seasonList, eventsList)
+            rvMainFragment.layoutManager = LinearLayoutManager(this)} else {
+                bottomNavigationView.selectedItemId = R.id.historyFragment
+        }
     }
 
 }

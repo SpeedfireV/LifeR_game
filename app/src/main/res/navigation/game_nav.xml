@@ -3,31 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_nav"
-    app:startDestination="@id/notificationsFragment">
+    app:startDestination="@id/historyFragment">
 
     <fragment
         android:id="@+id/relationshipsFragment"
         android:name="com.example.lifergame.RelationshipsFragment"
         android:label="fragment_relationships"
-        tools:layout="@layout/fragment_relationships" />
+        tools:layout="@layout/fragment_relationships" >
+        <action
+            android:id="@+id/navigateToNotifications"
+            app:destination="@id/historyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.example.lifergame.StatsFragment"
+        android:name="com.example.lifergame.fragments.StatsFragment"
         android:label="fragment_stats"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_stats" >
+        <action
+            android:id="@+id/action_statsFragment_to_notificationsFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.example.lifergame.EventsFragment"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_eventsFragment_to_notificationsFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/notificationsFragment"
-        android:name="com.example.lifergame.NotificationsFragment"
+        android:id="@+id/historyFragment"
+        android:name="com.example.lifergame.fragments.HistoryFragment"
         android:label="fragment_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
-        android:id="@+id/eventsSecondFragment"
-        android:name="com.example.lifergame.EventsSecondFragment"
-        android:label="fragment_events_second"
-        tools:layout="@layout/fragment_events_second" />
+        tools:layout="@layout/fragment_history" />
 </navigation>

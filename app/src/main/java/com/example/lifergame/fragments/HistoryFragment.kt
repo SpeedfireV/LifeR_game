@@ -1,4 +1,4 @@
-package com.example.lifergame
+package com.example.lifergame.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lifergame.adapters.EventsAndSeasonsDatabaseHandler
+import com.example.lifergame.R
+import com.example.lifergame.adapters.RecyclerAdapterMain
 
-class NotificationsFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
     val seasonList = mutableListOf<String>()
     val yearList = mutableListOf<Int>()
@@ -23,15 +26,15 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_notifications, container, false)
+        return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val rvMainFragment = view.findViewById<RecyclerView>(R.id.rv_parent_seasons_events)
         val databaseHandler = EventsAndSeasonsDatabaseHandler(view.context)
+
+        val rvMainFragment = view.findViewById<RecyclerView>(R.id.rv_parent_seasons_events)
 
         val infoAboutSeasons = databaseHandler.getInfoAboutSeasons()
         seasonList.clear()
@@ -46,4 +49,24 @@ class NotificationsFragment : Fragment() {
 
 
     }
+
+    private fun seasonsAdapter(view: View, databaseHandler: EventsAndSeasonsDatabaseHandler, fragmentResumed: Boolean) {
+
+        val infoAboutSeasons = databaseHandler.getInfoAboutSeasons()
+        seasonList.clear()
+        yearList.clear()
+        for (i in infoAboutSeasons){
+            seasonList.add(i.currentSeason)
+            yearList.add(i.year)
+            eventsList.add(i.events)
+        }
+
+        if (fragmentResumed == true){
+            val rvMainFragment = view.findViewById<RecyclerView>(R.id.rv_parent_seasons_events)
+
+            rvMainFragment.layoutManager = LinearLayoutManager(view.context)
+            rvMainFragment.adapter = RecyclerAdapterMain(yearList, seasonList, eventsList)
+        }
+    }
+
 }

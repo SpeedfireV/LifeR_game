@@ -1,26 +1,19 @@
-package com.example.lifergame
-import android.app.Activity
-import android.content.Context
+package com.example.lifergame.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.example.lifergame.R
 
-class RecyclerAdapterEvents(private val events: MutableList<String>, private val colorOfBackground: Int, private val parentPosition: Int): RecyclerView.Adapter<RecyclerAdapterEvents.ViewHolder>() {
+class RecyclerAdapterEvents(private val events: String, private val colorOfBackground: Int): RecyclerView.Adapter<RecyclerAdapterEvents.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val clListOfEvents: ConstraintLayout = itemView.findViewById(R.id.cl_child_event)
         val tvEvents: TextView = itemView.findViewById(R.id.tv_notifications_events)
-        val mutableListOfEvents: List<String> = events[parentPosition].split(";")
+        val mutableListOfEvents: List<String> = events.split(";")
 
 
         init {
@@ -44,7 +37,7 @@ class RecyclerAdapterEvents(private val events: MutableList<String>, private val
     }
 
     override fun getItemCount(): Int {
-        val splittedEvents: List<String> = events[parentPosition].split(";")
+        val splittedEvents: List<String> = events.split(";")
         return splittedEvents.size
     }
 }
